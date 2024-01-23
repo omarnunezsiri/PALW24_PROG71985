@@ -14,10 +14,11 @@ int main(void)
 	float centimeters;
 	printf("Please enter a value (cm): ");
 
-#ifdef _WIN32
+	/* Pre-processor directive: Windows compiler */
+#ifdef _WIN32 
 	scanf_s("%f", &centimeters);
 #else
-	scanf("%f", &centimeters);
+	scanf("%f", &centimeters); 
 #endif
 
 	float meters = centimeters / 100;

@@ -7,18 +7,19 @@
 // revision history
 // 1.0			2023-01-21		initial
 
-#include <stdio.h>
+#include <stdio.h> // standard io (input and output) functions
 
-int main(void)
+int main(void) // main function
 {
+	// declaring variables for the program
 	int a = 70;
 	float b = 15.0f;
 	char c = 'a';
 	double d = 20.0;
 
-	printf("size in bytes for an integer: %d\n", sizeof(a));
-	printf("size in bytes for a float: %d\n", sizeof(b));
-	printf("size in bytes for a character: %d\n", sizeof(c));
-	printf("size in bytes for a double: %d\n", sizeof(d));
+	printf("size in bytes for an integer: %d\n", sizeof(a)); // 4 bytes
+	printf("size in bytes for a float: %d\n", sizeof(b)); // 4 bytes
+	printf("size in bytes for a character: %d\n", sizeof(c)); // 1 bytes
+	printf("size in bytes for a double: %d\n", sizeof(d)); // 8 bytes
 	return 0;
 }

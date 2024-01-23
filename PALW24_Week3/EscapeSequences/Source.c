@@ -12,7 +12,8 @@
 void main(void)
 {
 	float wage;
-
+	
+	/* \a bell sound, \b backslash, \t tabular (tab), \n newline, \r start of line (carriage) */
 	printf("\aStarting database connection...");
 	printf("\t\tConnection Established!\n");
 	printf("Enter wage: $_____\b\b\b\b\b");
