@@ -24,21 +24,21 @@ int main(void)
 
 	switch (option)
 	{
-	case 'a':
-		printf("Add");
-		break;
-	case 'b':
-		printf("Substract");
-		break;
-	case 'c':
-		printf("Multiply");
-		break;
-	case 'd':
-		printf("Divide");
-		break;
-	default:
-		printf("??"); // When would the program hit this?
-		break;
+		case 'a':
+			printf("Add");
+			break;
+		case 'b':
+			printf("Substract");
+			break;
+		case 'c':
+			printf("Multiply");
+			break;
+		case 'd':
+			printf("Divide");
+			break;
+		default:
+			printf("??"); // When would the program hit this?
+			break;
 	}
 
 	return 0;

@@ -25,12 +25,18 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 
+	/*
+	* 
+	* 1. Variable declaration (initialization)
+	* 2. Condition
+	* 3. Common section (increment/decrement)
+	* 
+	*/
 	for (int counter = 1; counter <= number; counter++) // do we need to include the number given or not?
 	{
 		if (number % counter == 0)
 			printf("%d is a factor of %d\n", counter, number);
 	}
-
 
 	return 0;
 }

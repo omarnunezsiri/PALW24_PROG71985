@@ -11,21 +11,33 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdbool.h> // exists in C++, not included in C
 
 void main(void)
 {
 	const int BOOT_UP = 123192; // AUTH Protocol Key dedicated to this client
+	const int BOOT_UP2 = 10000;
 	int key;
-	bool isConnected = false; // why set it before the loop and not inside?
+	int anotherKey;
+	bool isConnected = false; // why set it before the loop and not inside? 
 
 	printf("Hello Client! Validation to connect to the server is required.\n");
 	do
 	{
-		printf("Please enter the boot_up AUTH key to establish connection with the server: ");
-		scanf("%d", &key); // assumes that the input is okay (can you fix it?)
+		printf("Please enter the boot_up AUTH keys to establish connection with the server: ");
+		
+		// check if the input is wrong
+		int symbols_returned = scanf("%d %d", &key, &anotherKey);
 
-		if (key == BOOT_UP)
+		printf("symbols_returned %d\n", symbols_returned);
+
+		// we have to check if the scanf returns a 0 or 1 (1 means good in this case)
+		if (symbols_returned != 2)
+		{
+			printf("Not good\n");
+			while ((getchar()) != '\n'); // clears input buffer
+		}
+		else if (key == BOOT_UP && anotherKey == BOOT_UP2)
 			isConnected = true;
 		else
 			printf("That's not correct!\n");
