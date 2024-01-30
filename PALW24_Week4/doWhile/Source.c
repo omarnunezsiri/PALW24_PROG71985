@@ -16,7 +16,7 @@
 void main(void)
 {
 	const int BOOT_UP = 123192; // AUTH Protocol Key dedicated to this client
-	const int BOOT_UP2 = 10000;
+	const int BOOT_UP2 = 10000; // Addition of a second Protocol Key for double auth
 	int key;
 	int anotherKey;
 	bool isConnected = false; // why set it before the loop and not inside? 
@@ -25,16 +25,14 @@ void main(void)
 	do
 	{
 		printf("Please enter the boot_up AUTH keys to establish connection with the server: ");
-		
-		// check if the input is wrong
 		int symbols_returned = scanf("%d %d", &key, &anotherKey);
 
-		printf("symbols_returned %d\n", symbols_returned);
+		// printf("symbols_returned %d\n", symbols_returned);
 
-		// we have to check if the scanf returns a 0 or 1 (1 means good in this case)
+		// we have to check if the scanf returns the correct number of items assigned (2 in this case)
 		if (symbols_returned != 2)
 		{
-			printf("Not good\n");
+			printf("Invalid input. Only two integers are allowed!\n");
 			while ((getchar()) != '\n'); // clears input buffer
 		}
 		else if (key == BOOT_UP && anotherKey == BOOT_UP2)
