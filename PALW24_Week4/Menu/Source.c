@@ -21,14 +21,30 @@ void main(void)
 	char option = getchar();
 
 	// how else can we implement the following?
-	if (option == 'a')
-		printf("MySQL Root Form\n");
-	else if (option == 'b')
-		printf("SSP Auth Key Form\n");
-	else if (option == 'c')
-		printf("Import pop-up\n");
-	else
-		printf("Only a-c.\n");
+	//if (option == 'a')
+	//	printf("MySQL Root Form\n");
+	//else if (option == 'b')
+	//	printf("SSP Auth Key Form\n");
+	//else if (option == 'c')
+	//	printf("Import pop-up\n");
+	//else
+	//	printf("Only a-c.\n");
+
+	switch (option)
+	{
+		case 'a':
+			printf("MySQL Root Form\n");
+			break;
+		case 'b':
+			printf("SSP Auth Key Form\n");
+			break;
+		case 'c':
+			printf("Import pop-up\n");
+			break;
+		default:
+			printf("Only a-c.\n");
+			break;
+	}
 
 	return 0;
 }

@@ -19,23 +19,26 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 int main(void)
 {
-    // to-do: initialize random number seed
-    int num = rand() % 100 + 1;
+    // initialize random number seed
+	srand((unsigned)time(NULL));
+
+    int num = rand() % 100 + 1; // generate between 0 and 100
 
     // prompting the user and verifying 
     int guess;
     do
     {
-		printf("num: %d\n", num);
+		// printf("num: %d\n", num);
         
         printf("Guess a number:\n");
         int symbols_returned = scanf("%d", &guess);
-
+        
         /*
         * incorrect input
         * guess is correct
@@ -53,7 +56,11 @@ int main(void)
         }
         else
         {
-            printf("You guessed wrong! Try again.\n");
+            if (guess < num)
+                printf("You guessed too low! Try again.\n");
+
+            if (guess > num)
+                printf("You guessed too high! Try again.\n");
         }
     }while(num != guess);
 

@@ -17,7 +17,7 @@ int main(void)
 	scanf_s("%d", &number); // review! what does _s stand for?
 
 	int counter = 1;
-	while (counter <= number) // can we implement this differently?
+	while (counter <= number) // can we implement this differently? (using a for loop, better for ranges)
 	{
 		if (number % counter == 0)
 			printf("%d is a factor of %d\n", counter, number);
