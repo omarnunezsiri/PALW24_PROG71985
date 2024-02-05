@@ -11,19 +11,7 @@
 
 #include <stdio.h>
 
-int findMax(int, int);
-
-int main(void)
-{
-	int firstNum = 10;
-	int secondNum = 20;
-
-	int max = findMax(firstNum, secondNum);
-
-	printf("The max between %d and %d is: %d", firstNum, secondNum, max);
-	return 0;
-}
-
+// function implementation without a prototype
 int findMax(int firstNum, int secondNum)
 {
 	int max;
@@ -34,4 +22,15 @@ int findMax(int firstNum, int secondNum)
 		max = secondNum;
 
 	return max;
+}
+
+int main(void)
+{
+	int firstNum = 30;
+	int secondNum = 20;
+
+	int max = findMax(firstNum, secondNum);
+
+	printf("The max between %d and %d is: %d", firstNum, secondNum, max);
+	return 0;
 }

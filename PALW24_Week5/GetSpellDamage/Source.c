@@ -21,39 +21,75 @@
 #define WATER_MULTIPLIER 0.2
 #define AIR_MULTIPLIER 0.3
 #define EARTH_MULTIPLIER 0.6
-#define DMG_CONSTANT 9.1873
+#define DMG_CONSTANT 9.1873f
 
-void getSpellDamage(float, int);
+//float getSpellDamage(int);
+void getSpellDamage(float*, int);
 int main(void)
 {
-	int spell = FIRE;
-	float dmg = 0.0f;
+	int spell = EARTH;
+	float dmg = 0.0f; // 0xBB
 
-	getSpellDamage(dmg, spell); // are we changing the value of dmg at any point?
+	// & => the address of (some variable)
+	// * => the value at  (some address)
+	getSpellDamage(&dmg, spell); // are we changing the value of dmg at any point?
 
 	printf("SPELL: %d\n", spell);
 	printf("Damage: %f\n", dmg); // will this display 0.0 or the expected value?
 	return 0;
 }
 
-void getSpellDamage(float dmg, int spell)
+// Pass by value (currently)
+// Solution 1: Pass by reference (or pointer to reference dmg from main)
+// Solution 2: Return the value from the function
+void getSpellDamage(float* dmg, int spell)
 {
-	dmg = DMG_CONSTANT; // what is the address of dmg? is it the same as the address of the variable in main?
+	// 0xAB
+	// & => the address of (some variable)
+	// * => the value at  (some address)
+	// 
+	// dereferencing a pointer (research this)
+	*dmg = DMG_CONSTANT; // what is the address of dmg? is it the same as the address of the variable in main?
 
 	if (spell == FIRE)
 	{
-		dmg *= FIRE_MULTIPLIER;
+		*dmg *= FIRE_MULTIPLIER;
 	}
 	else if (spell == WATER)
 	{
-		dmg *= WATER_MULTIPLIER;
+		*dmg *= WATER_MULTIPLIER;
 	}
 	else if (spell == AIR)
 	{
-		dmg *= AIR_MULTIPLIER;
+		*dmg *= AIR_MULTIPLIER;
 	}
 	else if (spell == EARTH)
 	{
-		dmg *= EARTH_MULTIPLIER;
+		*dmg *= EARTH_MULTIPLIER;
 	}
 }
+
+//float getSpellDamage(int spell)
+//{
+//	// 0xAB
+//	float dmg = DMG_CONSTANT; // what is the address of dmg? is it the same as the address of the variable in main?
+//
+//	if (spell == FIRE)
+//	{
+//		dmg *= FIRE_MULTIPLIER;
+//	}
+//	else if (spell == WATER)
+//	{
+//		dmg *= WATER_MULTIPLIER;
+//	}
+//	else if (spell == AIR)
+//	{
+//		dmg *= AIR_MULTIPLIER;
+//	}
+//	else if (spell == EARTH)
+//	{
+//		dmg *= EARTH_MULTIPLIER;
+//	}
+//
+//	return dmg;
+//}
