@@ -16,8 +16,8 @@ void alterInt(int);
 
 int main(void)
 {
-	int originalNum = 5;
-	int numbers[MAXARR] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int originalNum = 5; // 10
+	int numbers[MAXARR] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
 
 	// call the function to alter the information
 	alterArray(numbers, MAXARR);
@@ -33,6 +33,8 @@ int main(void)
 	return 0;
 }
 
+// arrays decay to pointers
+// numbers is passed as a reference
 void alterArray(int* numbers, int length)
 {
 	for (int i = 0; i < length; i++)
