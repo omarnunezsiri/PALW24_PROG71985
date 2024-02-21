@@ -15,7 +15,7 @@
 
 typedef struct Cord {
 	int id;
-	int currentIndex;
+	int currentIndex; // to track how many users are there
 	USER users[MAXUSERS]; // a struct within a struct
 }CORD;
 

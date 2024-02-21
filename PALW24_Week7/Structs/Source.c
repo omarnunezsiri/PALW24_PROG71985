@@ -17,16 +17,8 @@
 
 int main(void)
 {
-	USER user1 = CreateUser(1, "omarnunez", "conestogac", "2002-21-11");
-	USER user2 = CreateUser(2, "johndoe", "doejohn", "1996-01-01");
-	USER user3 = CreateUser(3, "linus", "torvlin111", "1969-12-28");
-	
-	CORD myCord = CreateCord(1);
-
-	// What does the & symbol represent?
-	AddNewUser(&myCord, user1);
-	AddNewUser(&myCord, user2);
-	AddNewUser(&myCord, user3);
+	CORD myCord;
+	StreamReadCord(&myCord, DATAFILE);
 
 	DisplayCord(myCord);
 
@@ -42,7 +34,7 @@ int main(void)
 
 	CORD myCord = CreateCord(1);
 
-	// What does the & symbol represent?
+	// What does the & symbol represent? The address
 	AddNewUser(&myCord, user1);
 	AddNewUser(&myCord, user2);
 	AddNewUser(&myCord, user3);

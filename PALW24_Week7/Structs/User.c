@@ -11,13 +11,14 @@
 #include "User.h"
 #include <string.h>
 
+/* A constructor (creating *the* object) */
 USER CreateUser(int id, char username[], char password[], char DOB[])
 {
 	USER user;
 
 	user.id = id;
 
-	/* What does _s mean? */
+	/* What does _s mean? "secure" */
 #ifdef _WIN32 // What is this preprocessor directive being used for?
 	strcpy_s(user.username, MAXSTR, username);
 	strcpy_s(user.password, MAXSTR, password);
@@ -38,7 +39,6 @@ void DisplayUser(USER thisUser)
 	printf("Password: %s\n", thisUser.password);
 	printf("DOB: %s\n", thisUser.DOB);
 }
-
 
 
 
