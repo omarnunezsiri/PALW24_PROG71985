@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #define MAXLINE 512
 
+// argc is the number of arguments passed to the program
+// argv is an array of strings containing the arguments
 int main(int argc, char* argv[])
 {
 	char line[MAXLINE]; // to read line by line from a file with a predetermined size
@@ -29,7 +31,8 @@ int main(int argc, char* argv[])
 	{
 		while (fgets(line, MAXLINE, fp) != NULL)
 		{
-			fprintf(stdout, "%s", line); // can we implement this in a different way?
+			//fprintf(stdout, "%s", line); // can we implement this in a different way?
+			printf("%s", line);
 		}
 	}
 	else

@@ -15,17 +15,17 @@
 
 typedef struct Player
 {
-	int id;
-	char username[MAXSTR];
-	char password[MAXSTR];
-	float exp;
+	int id; // 4
+	char username[MAXSTR]; // 30
+	char password[MAXSTR]; // 30
+	float exp; // 4 
 }PLAYER;
 
 int main(void)
 {
 	PLAYER p1 = { .id = 1, .username = "player1", .password = "greatpassword", .exp = 12321.3513f };
 
-	FILE* fp = fopen(FILENAME, "w"); // does FILENAME need to exist in our directory?
+	FILE* fp = fopen(FILENAME, "w"); // does FILENAME need to exist in our directory? nope, it will be created
 
 	if (fp) // what does this check for?
 	{
