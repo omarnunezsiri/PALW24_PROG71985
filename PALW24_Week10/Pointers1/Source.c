@@ -1,4 +1,5 @@
 // PAL Week 10 - Examine a C Program - Reviewing pointers using arrays
+//									   
 // 
 // PROG71985-W23/W24
 // 
@@ -12,19 +13,24 @@
 
 int main(void)
 {
+	/* Arrays decay to pointers */
+
 	int array[MAXARRAY] = { 1, 6, 3, 4, 5 };
 	int* ptr = array;
 
 	printf("array: %p -- ", array);
 	printf("&array[0]: %p -- ", &array[0]);
+	printf("&array[1]: %p -- ", &array[1]);
 	printf("ptr: %p\n", ptr);
 
 	printf("*array: %d -- ", *array);
 	printf("array[0]: %d -- ", array[0]);
 	printf("*ptr: %d\n", *ptr);
 
-	printf("*array: %d -- ", *(array + 1));
-	printf("array[0]: %d -- ", array[1]);
-	printf("*ptr: %d\n", *(ptr + 1));
+	// pointer arithmetic
+	printf("*(array + 1): %d -- ", *(array + 1));
+	printf("array[1]: %d -- ", array[1]);
+	printf("*(ptr + 1): %d\n", *(ptr + 1));
+
 	return 0;
 }

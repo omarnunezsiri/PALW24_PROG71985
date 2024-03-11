@@ -21,6 +21,7 @@ typedef struct Grade
 
 void setGradeFloatingGrade(GRADE* g, float newGrade)
 {
+	// trust, but verify
 	if (newGrade >= MIN_GRADE && newGrade <= MAX_GRADE)
 	{
 		g->floatingGrade = newGrade;
@@ -34,16 +35,19 @@ void displayGrade(GRADE g)
 
 int main(void)
 {
+	// 0xAA
 	GRADE newGrade = { .floatingGrade = 91.33, .letter = 'S', .pass = true };
 
 	displayGrade(newGrade);
+	// 91.33 ---- S --- 1
 
 	GRADE* pGrade = &newGrade; // structures are datatypes, we can have pointers to structures!
-	setGradeFloatingGrade(pGrade, 70.333333);
+	setGradeFloatingGrade(pGrade, 70.3333333);
 	pGrade->letter = 'C';
 
-	displayGrade(*pGrade); // notice how we are changing pGrade but displaying newGrade?
+	displayGrade(newGrade); // notice how we are changing pGrade but displaying newGrade?
+	// 70.33333 -- C --- 1
 
-	printf("%p --- %p\n", &newGrade, pGrade); // what will this display?
+	printf("%p --- %p\n", &newGrade, pGrade); // what will this display? 0xAA --- 0xAA
 	return 0;
 }
