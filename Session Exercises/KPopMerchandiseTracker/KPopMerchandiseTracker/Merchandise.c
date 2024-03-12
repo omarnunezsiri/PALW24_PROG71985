@@ -1,20 +1,20 @@
 // PAL Project - K-Pop Merchandise ADT implementation
 // 
 // PROG71985-W24
-// PAL Attendees
-//
+// Madison
+// 
 // revision history
 // 1.0			2024-03-11		initial version
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <string.h>
+#include <stdlib.h>
 #include "Merchandise.h"
 
 // setters (trust, but verify)
 void setMerchName(KMERCH* merch, char* name) {	
 	size_t nameLength = strlen(name); // get the length of the name
 
-	
 	if (name != NULL && nameLength >= 0 && nameLength <= MAX_NAME) 
 	{
 		strncpy(merch->name, name, MAX_NAME);
@@ -81,4 +81,37 @@ bool getMerchOwnership(KMERCH* merch)
 }
 
 // display
-void printMerchInformation(KMERCH*);
+void displayMerchInformation(KMERCH* merch)
+{
+	// change the format of the kpop merch's ownership to be more user-friendly
+	char* friendlyOwnership = merch->owned ? "YES" : "NO";
+
+	// display the information
+	printf("%s, a %s for the fans of %s, only for $%.2fCAD! (OWNED? %s)\n", merch->name,
+																			merch->type,
+																			merch->idol,
+																			merch->price,
+																			friendlyOwnership);
+}
+
+// file i/o
+void writeMerchToFile(KMERCH* merch, FILE* fp) 
+{
+	if (fp)
+	{
+		char* friendlyOwnership = merch->owned ? "YES" : "NO"; // friendly representation
+
+		fprintf(fp, "%s\n", merch->name);
+		fprintf(fp, "%s\n", merch->type);
+		fprintf(fp, "%s\n", merch->idol);
+		fprintf(fp, "$%0.2f\n", merch->price);
+		fprintf(fp, "%s\n", friendlyOwnership);
+
+		printf("Wrote %zd bytes to to file\n", sizeof(struct Merchandise));
+	}
+	else
+	{
+		fprintf(stderr, "fp is null in writeMerchToFile. Exiting...\n");
+		exit(EXIT_FAILURE);
+	}
+}

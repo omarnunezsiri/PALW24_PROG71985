@@ -42,8 +42,8 @@ int main(void)
 	// 91.33 ---- S --- 1
 
 	GRADE* pGrade = &newGrade; // structures are datatypes, we can have pointers to structures!
-	setGradeFloatingGrade(pGrade, 70.3333333);
-	pGrade->letter = 'C';
+	setGradeFloatingGrade(pGrade, -60.0f);
+	//pGrade->letter = 'X';
 
 	displayGrade(newGrade); // notice how we are changing pGrade but displaying newGrade?
 	// 70.33333 -- C --- 1

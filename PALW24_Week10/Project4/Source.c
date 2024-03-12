@@ -8,12 +8,12 @@
 
 #include <stdio.h>
 
-int Add(int x, int y)
+int Add(int* x, int y)
 {
-	printf("address of x in add: %p\n", &x);
+	printf("address of x in add: %p\n", x);
 
-	x = 30; // are we changing the value of x in main?
-	return (x + y);
+	*x = 30; // are we changing the value of x in main?
+	return (*x + y);
 }
 
 int main(void)
@@ -24,7 +24,7 @@ int main(void)
 	printf("x before Add: %d\n", x);
 	printf("address of x in main: %p\n", &x);
 
-	int result = Add(x, y);
+	int result = Add(&x, y);
 
 	// will this display the updated value of x?
 	printf("result = %d\n", result);

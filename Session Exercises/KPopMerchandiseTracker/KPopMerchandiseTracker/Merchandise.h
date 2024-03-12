@@ -11,6 +11,7 @@
 #define MERCHANDISE_H
 
 #include <stdbool.h>
+#include <stdio.h>
 
 #define MAX_NAME 50
 #define MAX_IDOL 30
@@ -45,5 +46,9 @@ bool getMerchOwnership(KMERCH*);
 
 // display
 void displayMerchInformation(KMERCH*);
+
+// file i/o
+void writeMerchToFile(KMERCH*, FILE*);
+
 
 #endif // !MERCHANDISE_H

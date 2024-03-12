@@ -13,8 +13,10 @@ int main(void)
 {
 	// Height in centimeters
 	float* pHeight = (float*)malloc(sizeof(float)); // magic! what's going on here?
+	// allocating memory *dynamically*
 
 	// always check! but what exactly are we checking?
+	// maybe we don't have enough memory
 	if (pHeight == NULL)
 	{
 		fprintf(stderr, "Error allocating memory. Exiting!");
@@ -24,11 +26,11 @@ int main(void)
 	*pHeight = 2.50f;
 	printf("*pHeight: %f -- pHeight: %p\n", *pHeight, pHeight);
 
-	float anotherHeightInCm = *pHeight;
+	float anotherHeightInCm = *pHeight; // copy
 	anotherHeightInCm = 7.50f; // will this also change the value at pHeight?
 
 	printf("another: %f -- *pHeight: %f\n", anotherHeightInCm, *pHeight);
 
-	free(pHeight); // why is this important?
+	free(pHeight); // why is this important? clear memory (avoids memory leaks)
 	return 0;
 }

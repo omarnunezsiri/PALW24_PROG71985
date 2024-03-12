@@ -20,6 +20,8 @@ int main(int argc, char* argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	char* fileName = argv[1];
+
 	printf("-----------------------------------------------------\n");
 	printf("|                                                   |\n");
 	printf("|             K-Pop Merchandise Tracker             |\n");
@@ -35,20 +37,20 @@ int main(int argc, char* argv[])
 	setMerchPrice(&kmerch, 33.77f);
 	setMerchOwnership(&kmerch, false); // not owned yet :(
 
-	// get the information then display (refactor to use a display function for merch)
-	char* name = getMerchName(&kmerch);
-	char* type = getMerchType(&kmerch);
-	char* idol = getMerchIdolGroup(&kmerch);
-	float price = getMerchPrice(&kmerch);
-	bool owned = getMerchOwnership(&kmerch);
+	// simplify the process using a function
+	displayMerchInformation(&kmerch);
 
-	// change the format of the kpop merch's ownership to be more user-friendly
-	char* friendlyOwnership = owned ? "YES" : "NO";
+	// write the merch to a file
+	FILE* fp = fopen(fileName, "w");
 
-	// display the information
-	printf("%s, a %s for the fans of %s, only for $%.2fCAD! (OWNED? %s)\n", name,
-																			type,
-																			idol,
-																			price,
-																			friendlyOwnership);
-}
+	if (fp != NULL) // null checking 
+	{
+		writeMerchToFile(&kmerch, fp);
+		fclose(fp); // don't forget to close your files!
+	}
+	else
+	{
+		fprintf(stderr, "Unable to open %s. Exiting...\n", fileName);
+		exit(EXIT_FAILURE);
+	}
+} 
