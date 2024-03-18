@@ -26,7 +26,7 @@ typedef struct Merchandise {
 }KMERCH;
 
 // a creator/constructor (skip this for now)
-
+KMERCH CreateMerch(char*, char*, char*, float, bool);
 
 // setters
 void setMerchName(KMERCH*, char*);

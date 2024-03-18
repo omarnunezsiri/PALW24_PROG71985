@@ -11,6 +11,19 @@
 #include <stdlib.h>
 #include "Merchandise.h"
 
+KMERCH CreateMerch(char* name, char* type, char* idol, float price, bool owned)
+{
+	KMERCH merch;
+
+	setMerchName(&merch, name);
+	setMerchType(&merch, type);
+	setMerchIdolGroup(&merch, idol);
+	setMerchPrice(&merch, price);
+	setMerchOwnership(&merch, owned);
+
+	return merch;
+}
+
 // setters (trust, but verify)
 void setMerchName(KMERCH* merch, char* name) {	
 	size_t nameLength = strlen(name); // get the length of the name

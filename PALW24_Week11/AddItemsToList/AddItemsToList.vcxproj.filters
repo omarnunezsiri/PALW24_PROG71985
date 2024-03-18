@@ -18,31 +18,31 @@
     <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Merchandise.c">
+    <ClCompile Include="Item.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Color.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MerchNode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MerchList.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Merchandise.h">
+    <ClInclude Include="Item.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="MerchNode.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Node.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="MerchList.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="List.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

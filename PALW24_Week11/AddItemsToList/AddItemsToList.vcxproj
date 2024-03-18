@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4adaa557-51c6-4565-8bba-d451ad8469ea}</ProjectGuid>
-    <RootNamespace>KPopMerchandiseTracker</RootNamespace>
+    <ProjectGuid>{28003032-3e1d-43d7-97a2-80472cf32aea}</ProjectGuid>
+    <RootNamespace>AddItemsToList</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,17 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Color.c" />
-    <ClCompile Include="Merchandise.c" />
-    <ClCompile Include="MerchList.c" />
-    <ClCompile Include="MerchNode.c" />
     <ClCompile Include="Source.c" />
+    <ClCompile Include="Color.c" />
+    <ClCompile Include="Item.c" />
+    <ClCompile Include="List.c" />
+    <ClCompile Include="Node.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
-    <ClInclude Include="Merchandise.h" />
-    <ClInclude Include="MerchList.h" />
-    <ClInclude Include="MerchNode.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
