@@ -6,6 +6,8 @@
 // revision history
 // 1.0			2023-03-19		initial
 
+#define FILENAME "myItems.dat"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,6 +21,7 @@ int main(void)
 	ITEM item3 = CreateItem(3);
 	ITEM item4 = CreateItem(4);
 
+	//LIST myList = StreamReadList(FILENAME);
 	LIST myList = CreateList();
 
 	cyan();
@@ -44,6 +47,7 @@ int main(void)
 	DisplayList(myList); // display with items
 	reset();
 
+	StreamWriteList(myList, FILENAME); // save changes to file
 	DisposeList(&myList); // don't forget to free dynamically allocated variables!
 	return 0;
 }

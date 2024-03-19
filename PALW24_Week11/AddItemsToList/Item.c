@@ -6,6 +6,7 @@
 // revision history
 // 1.0			2023-03-19		initial
 
+#include <stdio.h>
 #include "Item.h"
 
 ITEM CreateItem(short int id)
@@ -18,6 +19,20 @@ ITEM CreateItem(short int id)
 void DisplayItem(ITEM item)
 {
 	printf("Item id: %hu\n", item.id);
+}
+
+void StreamWriteItem(ITEM item, FILE* fp)
+{
+	fprintf(fp, "%hu\n", item.id);
+}
+
+ITEM StreamReadItem(FILE* fp)
+{
+	short int id;
+
+	fscanf_s(fp, "%hu\n", &id);
+
+	return CreateItem(id);
 }
 
 void DisposeItem(PITEM item)

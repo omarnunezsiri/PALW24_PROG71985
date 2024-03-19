@@ -7,14 +7,14 @@
 #include "stdbool.h"
 #include <stdio.h>
 
-typedef struct List
+typedef struct MerchList
 {
-	PNODE head;
-}LIST, * PLIST;
+	PKMNODE head;
+}KMLIST, * PKMLIST;
 
-LIST CreateList();
-bool AddKMerchToList(PLIST, KMERCH);
-void DisplayList(LIST);
-void DisposeList(PLIST);
+KMLIST CreateList();
+bool AddKMerchToList(PKMLIST, KMERCH);
+void DisplayList(KMLIST);
+void DisposeList(PKMLIST);
 
 #endif // !LIST_H

@@ -23,6 +23,8 @@ typedef struct List
 LIST CreateList();
 bool AddItemToList(PLIST, ITEM);
 void DisplayList(LIST);
+void StreamWriteList(LIST, char*);
+LIST StreamReadList(char*);
 void DisposeList(PLIST);
 
 #endif // !LIST_H

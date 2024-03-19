@@ -6,6 +6,7 @@
 // revision history
 // 1.0			2023-03-19		initial
 
+#include <stdlib.h>
 #include "List.h"
 
 LIST CreateList()
@@ -65,6 +66,50 @@ void DisplayList(LIST list)
 		printf("List is empty. Add items to it!\n");
 	}
 }
+
+void StreamWriteList(LIST list, char* fileName)
+{
+	if (list.head) // list is not empty
+	{
+		FILE* fp = fopen(fileName, "w");
+		if (!fp) // opening file went wrong
+		{
+			fprintf(stderr, "Error opening %s. Exiting...\n", fileName);
+			exit(EXIT_FAILURE);
+		}
+
+		PNODE current = list.head;
+		while (current)
+		{
+			StreamWriteItem(GetNodeItem(current), fp);
+			current = GetNextNode(current);
+		}
+
+		fclose(fp); // don't forget to close your files!
+	}
+}
+
+LIST StreamReadList(char* fileName)
+{
+	LIST newList = CreateList();
+
+	FILE* fp = fopen(fileName, "r");
+	if (!fp)
+	{
+		fprintf(stderr, "Error opening %s. Exiting...\n", fileName);
+		exit(EXIT_FAILURE);
+	}
+
+	while (!(feof(fp))) // while we don't hit end-of-file
+	{
+		ITEM newItem = StreamReadItem(fp);
+		if (!AddItemToList(&newList, newItem))
+			exit(EXIT_FAILURE);
+	}
+
+	return newList;
+}
+
 
 void DisposeList(PLIST list)
 {

@@ -11,6 +11,8 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include <stdio.h>
+
 typedef struct Item
 {
 	short int id;
@@ -18,6 +20,8 @@ typedef struct Item
 
 ITEM CreateItem(short int);
 void DisplayItem(ITEM);
+void StreamWriteItem(ITEM, FILE*);
+ITEM StreamReadItem(FILE*);
 void DisposeItem(PITEM);
 
 #endif // !ITEM_H

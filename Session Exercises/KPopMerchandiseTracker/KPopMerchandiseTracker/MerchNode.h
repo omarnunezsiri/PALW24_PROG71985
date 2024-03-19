@@ -9,12 +9,12 @@ typedef struct Node
 {
 	KMERCH merch;
 	struct Node* next;
-}NODE, * PNODE;
+}KMNODE, * PKMNODE;
 
-PNODE CreateNode(KMERCH);
-PNODE GetNextNode(PNODE);
-KMERCH GetNodeKMerch(PNODE);
-void SetNextNode(PNODE, PNODE);
-void DisposeNode(PNODE);
+PKMNODE CreateNode(KMERCH);
+PKMNODE GetNextNode(PKMNODE);
+KMERCH GetNodeKMerch(PKMNODE);
+void SetNextNode(PKMNODE, PKMNODE);
+void DisposeNode(PKMNODE);
 
 #endif // !NODE_H

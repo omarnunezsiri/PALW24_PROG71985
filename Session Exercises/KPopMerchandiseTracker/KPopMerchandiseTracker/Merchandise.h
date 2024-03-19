@@ -49,6 +49,7 @@ void displayMerchInformation(KMERCH*);
 
 // file i/o
 void writeMerchToFile(KMERCH*, FILE*);
+KMERCH* readMerchFromFile(FILE*);
 
 
 #endif // !MERCHANDISE_H

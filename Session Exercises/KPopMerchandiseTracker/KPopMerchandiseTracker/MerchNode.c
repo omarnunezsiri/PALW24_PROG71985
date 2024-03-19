@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-PNODE CreateNode(KMERCH newMerch)
+PKMNODE CreateNode(KMERCH newMerch)
 {
-	PNODE newNode = (PNODE)malloc(sizeof(NODE)); // allocating memory
+	PKMNODE newNode = (PKMNODE)malloc(sizeof(KMNODE)); // allocating memory
 	if (!newNode) // check if memory was allocated
 	{
 		fprintf(stderr, "Error allocating new node. Exiting...\n");
@@ -17,22 +17,22 @@ PNODE CreateNode(KMERCH newMerch)
 	return newNode;
 }
 
-PNODE GetNextNode(PNODE node)
+PKMNODE GetNextNode(PKMNODE node)
 {
 	return node->next;
 }
 
-void SetNextNode(PNODE currentNode, PNODE nextNode)
+void SetNextNode(PKMNODE currentNode, PKMNODE nextNode)
 {
 	currentNode->next = nextNode;
 }
 
-KMERCH GetNodeKMerch(PNODE node)
+KMERCH GetNodeKMerch(PKMNODE node)
 {
 	return node->merch;
 }
 
-void DisposeNode(PNODE node)
+void DisposeNode(PKMNODE node)
 {
 	free(node); // free heap allocated memory
 }

@@ -1,15 +1,15 @@
 #include "MerchList.h"
 
-LIST CreateList()
+KMLIST CreateList()
 {
-	LIST newList = { 0 }; // "safe" state for the list
+	KMLIST newList = { 0 }; // "safe" state for the list
 
 	return newList;
 }
 
-bool AddKMerchToList(PLIST list, KMERCH merch)
+bool AddKMerchToList(PKMLIST list, KMERCH merch)
 {
-	PNODE newNode = CreateNode(merch);
+	PKMNODE newNode = CreateNode(merch);
 
 	if (!newNode) // checks if the node was allocated (malloc can fail)
 		return false;
@@ -27,7 +27,7 @@ bool AddKMerchToList(PLIST list, KMERCH merch)
 	}
 	else
 	{
-		PNODE currentNode = list->head;
+		PKMNODE currentNode = list->head;
 
 		// find the last node in the list
 		while (GetNextNode(currentNode))
@@ -41,11 +41,11 @@ bool AddKMerchToList(PLIST list, KMERCH merch)
 	return true;
 }
 
-void DisplayList(LIST list)
+void DisplayList(KMLIST list)
 {
 	if (list.head) // common pattern to check if the list is empty
 	{
-		PNODE current = list.head;
+		PKMNODE current = list.head;
 		while (current)
 		{
 			KMERCH currentMerch = GetNodeKMerch(current);
@@ -59,10 +59,10 @@ void DisplayList(LIST list)
 	}
 }
 
-void DisposeList(PLIST list)
+void DisposeList(PKMLIST list)
 {
-	PNODE temp;
-	PNODE currentNode = list->head;
+	PKMNODE temp;
+	PKMNODE currentNode = list->head;
 
 	while (currentNode)
 	{

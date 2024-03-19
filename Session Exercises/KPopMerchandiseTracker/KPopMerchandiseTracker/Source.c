@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	KMERCH kmerch3 = CreateMerch("Example 3", "Sweatshirt", "BTS", 35.1f, false);
 	KMERCH kmerch4 = CreateMerch("Example 4", "Sweatshirt", "Red Velvet", 16.63f, true);
 
-	LIST myList = CreateList();
+	KMLIST myList = CreateList();
 
 	printf("----------------------- Empty List ---------------------\n");
 	DisplayList(myList); // display while being empty
@@ -58,22 +58,3 @@ int main(int argc, char* argv[])
 
 	return 0;
 } 
-
-
-
-
-
-
-	//// write the merch to a file
-	//FILE* fp = fopen(fileName, "w");
-
-	//if (fp != NULL) // null checking 
-	//{
-	//	writeMerchToFile(&kmerch, fp);
-	//	fclose(fp); // don't forget to close your files!
-	//}
-	//else
-	//{
-	//	fprintf(stderr, "Unable to open %s. Exiting...\n", fileName);
-	//	exit(EXIT_FAILURE);
-	//}
