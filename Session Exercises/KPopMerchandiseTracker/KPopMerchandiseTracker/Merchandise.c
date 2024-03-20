@@ -39,7 +39,7 @@ void removeTrailingNewLine(char* str)
 }
 
 // setters (trust, but verify)
-void setMerchName(KMERCH* merch, char* name) {	
+void setMerchName(PKMERCH merch, char* name) {	
 	size_t nameLength = strlen(name); // get the length of the name
 
 	if (name != NULL && nameLength >= 0 && nameLength <= MAX_NAME) 
@@ -49,7 +49,7 @@ void setMerchName(KMERCH* merch, char* name) {
 	}
 }
 
-void setMerchType(KMERCH* merch, char* type) {
+void setMerchType(PKMERCH merch, char* type) {
 	
 	size_t typeLength = strlen(type); // get the length of the type
 
@@ -60,7 +60,7 @@ void setMerchType(KMERCH* merch, char* type) {
 	}
 }
 
-void setMerchIdolGroup(KMERCH* merch, char* idol) {
+void setMerchIdolGroup(PKMERCH merch, char* idol) {
 	
 	size_t idolLength = strlen(idol); // get the length of the idol
 
@@ -71,7 +71,7 @@ void setMerchIdolGroup(KMERCH* merch, char* idol) {
 	}
 }
 
-void setMerchPrice(KMERCH* merch, float price) {
+void setMerchPrice(PKMERCH merch, float price) {
 
 	if(price >= 0) 
 	{
@@ -79,39 +79,39 @@ void setMerchPrice(KMERCH* merch, float price) {
 	}
 }
 
-void setMerchOwnership(KMERCH* merch, bool ownership) 
+void setMerchOwnership(PKMERCH merch, bool ownership) 
 {
 	merch->owned = ownership;
 }
 
 // getters
-char* getMerchName(KMERCH* merch)
+char* getMerchName(PKMERCH merch)
 {
 	return (merch->name);
 }
 
-char* getMerchType(KMERCH* merch) 
+char* getMerchType(PKMERCH merch) 
 {
 	return (merch->type);
 }
 
-char* getMerchIdolGroup(KMERCH* merch) 
+char* getMerchIdolGroup(PKMERCH merch) 
 {
 	return (merch->idol);
 }
 
-float getMerchPrice(KMERCH* merch) 
+float getMerchPrice(PKMERCH merch) 
 {
 	return (merch->price);
 }
 
-bool getMerchOwnership(KMERCH* merch) 
+bool getMerchOwnership(PKMERCH merch) 
 {
 	return (merch->owned);
 }
 
 // display
-void displayMerchInformation(KMERCH* merch)
+void displayMerchInformation(PKMERCH merch)
 {
 	// change the format of the kpop merch's ownership to be more user-friendly
 	char* friendlyOwnership = merch->owned ? "YES" : "NO";
@@ -125,13 +125,13 @@ void displayMerchInformation(KMERCH* merch)
 }
 
 // file i/o
-void writeMerchToFile(KMERCH* merch, FILE* fp) 
+void writeMerchToFile(PKMERCH merch, FILE* fp) 
 {
 	if (fp)
 	{
 		char* friendlyOwnership = merch->owned ? "YES" : "NO"; // friendly representation
 
-		fprintf(fp, "%s\n", merch->name);
+		fprintf(fp, "\n%s\n", merch->name);
 		fprintf(fp, "%s\n", merch->type);
 		fprintf(fp, "%s\n", merch->idol);
 		fprintf(fp, "$%0.2f\n", merch->price);
@@ -145,10 +145,8 @@ void writeMerchToFile(KMERCH* merch, FILE* fp)
 	}
 }
 
-KMERCH* readMerchFromFile(FILE* fp)
+void readMerchFromFile(FILE* fp, PKMERCH merch)
 {
-	KMERCH merch;
-
 	if (fp)
 	{
 		char temp[MAX_NAME]; // temporary buffer for reading from file
@@ -158,25 +156,23 @@ KMERCH* readMerchFromFile(FILE* fp)
 
 		fgets(temp, MAX_NAME, fp);
 		removeTrailingNewLine(temp);
-		setMerchName(&merch, temp);
+		setMerchName(merch, temp);
 
 		fgets(temp, MAX_TYPE, fp);
 		removeTrailingNewLine(temp);
-		setMerchType(&merch, temp);
+		setMerchType(merch, temp);
 
 		fgets(temp, MAX_IDOL, fp);
-		setMerchIdolGroup(&merch, temp);
+		setMerchIdolGroup(merch, temp);
 
 		fscanf_s(fp, "$%f\n", &tempF);
-		setMerchPrice(&merch, tempF);
+		setMerchPrice(merch, tempF);
 
 		fgets(temp, sizeof(MERCH_STR_OWNED) + 1, fp);
-		setMerchOwnership(&merch, strcmp(temp, MERCH_STR_OWNED) == 0);
+		setMerchOwnership(merch, strcmp(temp, MERCH_STR_OWNED) == 0);
 	}
 	else
 	{
 		fprintf(stderr, "fp is null in readMerchFromFile. Avoiding any actions!\n");
 	}
-
-	return &merch;
 }

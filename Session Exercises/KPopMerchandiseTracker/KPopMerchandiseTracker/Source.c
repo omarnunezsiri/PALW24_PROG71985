@@ -28,31 +28,21 @@ int main(int argc, char* argv[])
 	printf("|                                                   |\n");
 	printf("-----------------------------------------------------\n\n");
 
-	KMERCH kmerch = CreateMerch("BTS Love Yourself Sweatshirt", "Sweatshirt", "BTS", 33.77f, false);
-	KMERCH kmerch2 = CreateMerch("Example 2", "Sweatshirt", "Black Pink", 34.5f, true);
-	KMERCH kmerch3 = CreateMerch("Example 3", "Sweatshirt", "BTS", 35.1f, false);
-	KMERCH kmerch4 = CreateMerch("Example 4", "Sweatshirt", "Red Velvet", 16.63f, true);
-
-	KMLIST myList = CreateList();
-
-	printf("----------------------- Empty List ---------------------\n");
-	DisplayList(myList); // display while being empty
-
-	printf("\n----------------------- Adding Items ---------------------\n");
-	if (!AddKMerchToList(&myList, kmerch))
+	KMLIST myList = CreateList(); // create a list
+	if(!StreamReadList(&myList, fileName)) // read from file
+	{
+		fprintf(stderr, "Error reading from file %s\n", fileName);
 		exit(EXIT_FAILURE);
+	}
 
-	if (!AddKMerchToList(&myList, kmerch2))
+	printf("----------------------- List after reading from file ---------------------\n");
+	DisplayList(&myList); // display while being empty
+
+	if (!StreamWriteList(&myList, fileName)) // write to file
+	{
+		fprintf(stderr, "Error writing to file %s\n", fileName);
 		exit(EXIT_FAILURE);
-
-	if (!AddKMerchToList(&myList, kmerch3))
-		exit(EXIT_FAILURE);
-
-	if (!AddKMerchToList(&myList, kmerch4))
-		exit(EXIT_FAILURE);
-
-	printf("\n----------------------- Items ---------------------\n");
-	DisplayList(myList); // display with items
+	}
 
 	DisposeList(&myList); // don't forget to free dynamically allocated variables!
 

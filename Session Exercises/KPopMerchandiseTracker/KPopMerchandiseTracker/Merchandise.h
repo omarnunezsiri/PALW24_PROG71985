@@ -23,33 +23,33 @@ typedef struct Merchandise {
 	char idol[MAX_IDOL]; // Name of idol/group item belongs to, i.e. "BTS", "Red Velvet"
 	float price; // Price of item, i.e. $33.77CAD
 	bool owned; // Whether the fan already owns this item
-}KMERCH;
+}KMERCH, *PKMERCH;
 
 // a creator/constructor (skip this for now)
 KMERCH CreateMerch(char*, char*, char*, float, bool);
 
 // setters
-void setMerchName(KMERCH*, char*);
-void setMerchType(KMERCH*, char*);
-void setMerchIdolGroup(KMERCH*, char*);
-void setMerchPrice(KMERCH*, float);
-void setMerchOwnership(KMERCH*, bool);
+void setMerchName(PKMERCH, char*);
+void setMerchType(PKMERCH, char*);
+void setMerchIdolGroup(PKMERCH, char*);
+void setMerchPrice(PKMERCH, float);
+void setMerchOwnership(PKMERCH, bool);
 
 /* // prefer pointers over creating copies to *get* information */
 
 // getters
-char* getMerchName(KMERCH*);
-char* getMerchType(KMERCH*);
-char* getMerchIdolGroup(KMERCH*);
-float getMerchPrice(KMERCH*);
-bool getMerchOwnership(KMERCH*); 
+char* getMerchName(PKMERCH);
+char* getMerchType(PKMERCH);
+char* getMerchIdolGroup(PKMERCH);
+float getMerchPrice(PKMERCH);
+bool getMerchOwnership(PKMERCH); 
 
 // display
-void displayMerchInformation(KMERCH*);
+void displayMerchInformation(PKMERCH);
 
 // file i/o
-void writeMerchToFile(KMERCH*, FILE*);
-KMERCH* readMerchFromFile(FILE*);
+void writeMerchToFile(PKMERCH, FILE*);
+void readMerchFromFile(FILE*, PKMERCH);
 
 
 #endif // !MERCHANDISE_H

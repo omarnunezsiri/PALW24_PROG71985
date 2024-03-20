@@ -1,8 +1,9 @@
 #include "MerchList.h"
+#include <string.h>
 
 KMLIST CreateList()
 {
-	KMLIST newList = { 0 }; // "safe" state for the list
+	KMLIST newList = { 0 }; // initialize all fields to 0
 
 	return newList;
 }
@@ -41,11 +42,11 @@ bool AddKMerchToList(PKMLIST list, KMERCH merch)
 	return true;
 }
 
-void DisplayList(KMLIST list)
+void DisplayList(PKMLIST list)
 {
-	if (list.head) // common pattern to check if the list is empty
+	if (list->head) // common pattern to check if the list is empty
 	{
-		PKMNODE current = list.head;
+		PKMNODE current = list->head;
 		while (current)
 		{
 			KMERCH currentMerch = GetNodeKMerch(current);
@@ -57,6 +58,62 @@ void DisplayList(KMLIST list)
 	{
 		printf("List is empty. Add items to it!\n");
 	}
+}
+
+bool StreamWriteList(PKMLIST list, char* filename)
+{
+	if (list->head) // common pattern to check if the list is empty
+	{
+		FILE* stream = fopen(filename, "w");
+
+		if (!stream)
+		{
+			fprintf(stderr, "Error opening file %s\n", filename);
+			return false;
+		}
+
+		PKMNODE current = list->head;
+		while (current)
+		{
+			KMERCH currentMerch = GetNodeKMerch(current);
+			writeMerchToFile(&currentMerch, stream);
+			current = GetNextNode(current);
+		}
+	}
+	else
+	{
+		fprintf(stderr, "List is empty. Add items to it!\n");
+	}
+
+	return true;
+}
+
+bool StreamReadList(PKMLIST newList, char* filename)
+{
+	FILE* stream = fopen(filename, "r");
+
+	// check if the file was opened
+	if (!stream)
+	{
+		fprintf(stderr, "Error opening file %s\n", filename);
+		return false;
+	}
+
+	// continue reading until the end of the file
+	int c;
+	KMERCH merch;
+	while ((c = fgetc(stream)) != EOF)
+	{
+		readMerchFromFile(stream, &merch);
+		if (!AddKMerchToList(newList, merch)) // verify that the merch was added to the list
+		{
+			fprintf(stderr, "Error adding merch to list\n");
+			return false;
+		}
+	}
+
+	fclose(stream); // dont forget to close the file
+	return &newList; // return a pointer to the list
 }
 
 void DisposeList(PKMLIST list)

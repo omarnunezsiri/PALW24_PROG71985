@@ -14,7 +14,9 @@ typedef struct MerchList
 
 KMLIST CreateList();
 bool AddKMerchToList(PKMLIST, KMERCH);
-void DisplayList(KMLIST);
+void DisplayList(PKMLIST);
+bool StreamWriteList(PKMLIST, char*);
+bool StreamReadList(PKMLIST, char*);
 void DisposeList(PKMLIST);
 
 #endif // !LIST_H
