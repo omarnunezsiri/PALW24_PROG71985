@@ -113,7 +113,7 @@ bool StreamReadList(PKMLIST newList, char* filename)
 	}
 
 	fclose(stream); // dont forget to close the file
-	return &newList; // return a pointer to the list
+	return true;
 }
 
 void DisposeList(PKMLIST list)
